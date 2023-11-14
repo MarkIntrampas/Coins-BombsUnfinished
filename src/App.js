@@ -2,6 +2,11 @@
 import React, { Component } from 'react';
 import './style.css';
 import Piece from './gameComponent/Piece.js';
+import coinSound from './gameComponent/audio/cs.mp3'; // Import bomb sound
+import music from './gameComponent/audio/bm.mp3'; // Import bomb sound
+import bomb from './gameComponent/images/a.gif';
+import c from './gameComponent/images/c.gif';
+import reset from './gameComponent/images/reset.png';
 
 class App extends Component{
 p=[];
@@ -10,6 +15,7 @@ constructor(props){
 super(props);
 this.state = {
 statu: 'Starting',
+music:new Audio(music),
 bombM: 0,
 bombC: 0,
 coinC: 0,
@@ -26,7 +32,7 @@ alignItems:'center'
 board:{
 width:'300px',
 height:'300px',
-border:'2px soid white',
+border:'3px soid white',
 backgroundColor:'white',
 display:'grid',
 gridTemplateRows:'100px 100px 100px',
@@ -39,9 +45,15 @@ width:'400px',
 padding:'20px',
 fontSize:'44px',
 backgroundColor:'#7289da',
-color:'white',
-border:'3px solid white'
-}
+color:'white'
+},
+image:{
+  height:'10px',
+  width:'10px',
+  minHeight:'30px',
+  minWidth:'30px'    
+  }
+  
 };
 
 }
@@ -63,7 +75,9 @@ if(this.lastClicked==="bomb"){
 }
 
 start = ()=>{
-
+ const coinAudio = new Audio(coinSound);
+            coinAudio.play();
+      this.state.music.play();
   let pieces =[];
   let bombCount=0;
   let coinCount=0;
@@ -100,6 +114,9 @@ restart = ()=>{
     }
     pieces.push(<Piece type={num>=0.5 ? "bomb":"coin" } status="unclicked" over={this}/>);
   }
+  this.state.music.pause();
+  
+ this.state.music.currentTime = 0;
   this.setState({ 
     coinC: coinCount,
     coinM: coinCount,
@@ -122,9 +139,9 @@ if(this.state.statu==="going"){
    
     <div className="App" style={this.state.style}>
      <div id="bar">   
-      <h1 class="label">COINS: {this.state.coinC}/{this.state.coinM}</h1>
-      <h1 class="label">BOMBS: {this.state.bombC}/{this.state.bombM} </h1>
-      <button id="restart" onClick={this.restart}>RESTART</button>
+      <h1 class="label"><img src={c} alt="Icon" style={this.state.image} /> {this.state.coinC}/{this.state.coinM}</h1>
+      <h1 class="label"> <img src={bomb} alt="Icon" style={this.state.image} /> {this.state.bombC}/{this.state.bombM} </h1>
+      <button id="restart" onClick={this.restart}> <img src={reset} alt="Icon" style={this.state.image} /> </button>
      </div>
       <div style={this.state.board}>
          

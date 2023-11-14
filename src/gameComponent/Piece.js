@@ -59,8 +59,16 @@ handleClick = () => {
       let  a = this.props.over.state.bombC;
       a--;
    this.props.over.setState({bombC:a});
+   // Check if this.props.over.music is defined before calling play
+   
+   if (this.props.over.state.music) {
+      this.props.over.state.music.pause();
+  
+      // Reset the playback position to the beginning
+      this.props.over.state.music.currentTime = 0;
+  }
       setTimeout(() => {
-            swal({ title: "BOMB DONATED!",
+            swal({ title: "BOMB DETONATED!",
             iconHtml: '<img src="./images/a.gif">',
             text:"YOU CLICKED A BOMB!!",
 
@@ -88,6 +96,12 @@ handleClick = () => {
             this.props.over.setState({coinC:a});
             if(a<=0){
                   setTimeout(() => {
+                        if (this.props.over.state.music) {
+                              this.props.over.state.music.pause();
+                          
+                              // Reset the playback position to the beginning
+                              this.props.over.state.music.currentTime = 0;
+                          }
                         const winAudio = new Audio(winSound);
                         winAudio.play();
                         swal("YOU WON!!")
