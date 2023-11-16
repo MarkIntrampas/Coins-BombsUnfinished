@@ -1,11 +1,13 @@
 import React, {Component } from "react";
 import swal from 'sweetalert';
 import bomb from './images/a.gif';
-import c from './images/coin.gif';
+import c from './images/c.gif';
 import bombSound from './audio/bs.mp3'; // Import bomb sound
 import coinSound from './audio/cs.mp3'; // Import bomb sound
 import winSound from './audio/ws.mp3'; // Import bomb sound
 import './images/modal.css';
+import open from './images/OPEN2.png';
+import close from './images/close2.png';
 
 
 class Piece extends Component{
@@ -27,11 +29,26 @@ stle2:{
       color:'red',
       height:'100px',
       width:'100px',
-      border: '.5px solid white',
-      backgroundColor:'#7289da'
+      border:'1px solid black',
+      backgroundImage: `url(${close})`,
+backgroundSize: 'cover',
+backgroundRepeat: 'no-repeat',
+backgroundPosition: 'center',
       
       
       },
+      stle3:{
+            color:'red',
+            height:'100px',
+            width:'100px',
+             border:'1px solid black',
+            backgroundImage: `url(${open})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+            
+            
+            },
 image:{
 height:'100%',
 width:'100%',
@@ -128,7 +145,7 @@ render(){
       if(this.props.type==="bomb"){
             if(this.state.clicked===true){
                
-          return(<div style={this.state.stle}  onClick={this.handleClick} >
+          return(<div style={this.state.stle3}  onClick={this.handleClick} >
             
             <img src={bomb} alt="Bomb" style={this.state.image}></img>
     
@@ -146,7 +163,7 @@ render(){
       }else{
         
             if(this.state.clicked===true){
-        return(<div style={this.state.stle}  onClick={this.handleClick} >
+        return(<div style={this.state.stle3}  onClick={this.handleClick} >
             
             <img src={c} alt="Bomb" style={this.state.image}></img>
     

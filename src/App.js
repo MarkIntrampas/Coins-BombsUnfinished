@@ -7,6 +7,9 @@ import music from './gameComponent/audio/bm.mp3'; // Import bomb sound
 import bomb from './gameComponent/images/a.gif';
 import c from './gameComponent/images/c.gif';
 import reset from './gameComponent/images/reset.png';
+import bc from './gameComponent/images/bc.jpg';
+import wood from './gameComponent/images/wood.webp';
+
 
 class App extends Component{
 p=[];
@@ -21,7 +24,10 @@ bombC: 0,
 coinC: 0,
 coinM: 0,
 style:{
-backgroundColor:'#2c2f33',
+backgroundImage: `url(${bc})`,
+backgroundSize: 'cover',
+backgroundRepeat: 'no-repeat',
+backgroundPosition: 'center',
 height:'100vh',
 width:'100%',
 display:'flex',
@@ -30,14 +36,21 @@ justifyContent:'center',
 alignItems:'center'
 },
 board:{
-width:'300px',
-height:'300px',
+width:'auto',
+height:'auto',
+padding:'10px',
 border:'3px soid white',
 backgroundColor:'white',
 display:'grid',
+backgroundImage: `url(${wood})`,
+backgroundSize: 'cover',
+backgroundRepeat: 'no-repeat',
+backgroundPosition: 'center',
 gridTemplateRows:'100px 100px 100px',
-gridTemplateColumns:'100px 100px 100px'
-
+gridTemplateColumns:'100px 100px 100px',
+gridGap: '10px',
+border:'3px solid #633b3b',
+backgroundColor: 'rgba(0, 0, 0, 0.5)'
 },
 button:{
 height:'100px',
