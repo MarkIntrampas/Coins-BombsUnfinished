@@ -93,6 +93,51 @@ handleClick = () => {
       
                })
             .then((value) => {
+
+
+           /*
+                  swal.fire({
+                        title: "Please Enter Your Name",
+                        input: "text",
+                        inputAttributes: {
+                          autocapitalize: "off"
+                        },
+                        showCancelButton: true,
+                        confirmButtonText: "Look up",
+                        showLoaderOnConfirm: true,
+                        preConfirm: async (login) => {
+                          try {
+                            const githubUrl = `
+                              https://api.github.com/users/${login}
+                            `;
+                            const response = await fetch(githubUrl);
+                            if (!response.ok) {
+                              return swal.showValidationMessage(`
+                                ${JSON.stringify(await response.json())}
+                              `);
+                            }
+                            return response.json();
+                          } catch (error) {
+                            swal.showValidationMessage(`
+                              Request failed: ${error}
+                            `);
+                          }
+                        },
+                        allowOutsideClick: () => !swal.isLoading()
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          swal.fire({
+                            title: `${result.value.login}'s avatar`,
+                            imageUrl: result.value.avatar_url
+                          });
+                        }
+                      });
+
+
+
+
+*/
+
                   this.props.over.setState({ statu: 'start' });
             });
             
@@ -123,6 +168,17 @@ handleClick = () => {
                         winAudio.play();
                         swal("YOU WON!!")
                         .then((value) => {
+
+                            
+
+
+
+
+
+
+
+
+
                               this.props.over.setState({ statu: 'start' });
                         });
                   

@@ -1,0 +1,17 @@
+button {
+    height: 100px;
+    width: 400px;
+    padding: 20px;
+    font-size: 44px;
+    background-color: #7289da;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    button {
+      width: auto;
+      height: auto;
+      font-size: 24px;
+   
+    }
+  }

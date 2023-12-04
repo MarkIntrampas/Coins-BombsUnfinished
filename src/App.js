@@ -9,6 +9,7 @@ import c from './gameComponent/images/c.gif';
 import reset from './gameComponent/images/reset.png';
 import bc from './gameComponent/images/bc.jpg';
 import wood from './gameComponent/images/wood.webp';
+import './button.css';
 
 
 class App extends Component{
@@ -51,14 +52,6 @@ gridTemplateColumns:'100px 100px 100px',
 gridGap: '10px',
 border:'3px solid #633b3b',
 backgroundColor: 'rgba(0, 0, 0, 0.5)'
-},
-button:{
-height:'100px',
-width:'400px',
-padding:'20px',
-fontSize:'44px',
-backgroundColor:'#7289da',
-color:'white'
 },
 image:{
   height:'10px',
