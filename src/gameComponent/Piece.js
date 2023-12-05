@@ -8,9 +8,12 @@ import winSound from './audio/ws.mp3'; // Import bomb sound
 import './images/modal.css';
 import open from './images/OPEN2.png';
 import close from './images/close2.png';
+import { createClient } from '@supabase/supabase-js';
 
 
 class Piece extends Component{
+
+
 
 constructor(props){
  super(props);   
@@ -95,50 +98,59 @@ handleClick = () => {
             .then((value) => {
 
 
-           /*
-                  swal.fire({
-                        title: "Please Enter Your Name",
-                        input: "text",
-                        inputAttributes: {
-                          autocapitalize: "off"
-                        },
-                        showCancelButton: true,
-                        confirmButtonText: "Look up",
-                        showLoaderOnConfirm: true,
-                        preConfirm: async (login) => {
-                          try {
-                            const githubUrl = `
-                              https://api.github.com/users/${login}
-                            `;
-                            const response = await fetch(githubUrl);
-                            if (!response.ok) {
-                              return swal.showValidationMessage(`
-                                ${JSON.stringify(await response.json())}
-                              `);
-                            }
-                            return response.json();
-                          } catch (error) {
-                            swal.showValidationMessage(`
-                              Request failed: ${error}
-                            `);
-                          }
-                        },
-                        allowOutsideClick: () => !swal.isLoading()
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          swal.fire({
-                            title: `${result.value.login}'s avatar`,
-                            imageUrl: result.value.avatar_url
-                          });
-                        }
-                      });
+              swal({
+                text: 'Please Enter your Name',
+                content: "input",
+                button: {
+                  text: "SUBMIT",
+                  closeModal: false,
+                },
+              })
+              .then(name => {
+              
+                const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
+                const supabase = createClient(supabaseUrl, supabaseKey);
+                
+
+
+
+           const a =     async () => {
+                    const perfectProbability=100;
+                    const coins = this.props.over.state.coinM;
+                    const guess=this.props.over.state.coinC; 
+                    const probability=perfectProbability-(((coins/9)*100));
+                    const score =Math.round((9-(coins-guess))*probability);
+                    
+                    
+                  try {
+                    const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score,guess: coins-guess}]);
+                    if (error) {
+                      throw error;
+                    }
+                    
+                  } catch (error) {
+                    console.error('Error adding item:', error.message);
+                  }
+                  swal.close();
+                }
+
+                a();
+
+
+
+         
+             
+      
+              
+                this.props.over.setState({ statu: 'start' });
+              });
 
 
 
 
-*/
 
-                  this.props.over.setState({ statu: 'start' });
+
             });
             
 
@@ -171,7 +183,53 @@ handleClick = () => {
 
                             
 
-
+                              swal({
+                                    text: 'Please Enter your Name',
+                                    content: "input",
+                                    button: {
+                                      text: "SUBMIT",
+                                      closeModal: false,
+                                    },
+                                  })
+                                  .then(name => {
+                                  
+                                    const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
+                                    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
+                                    const supabase = createClient(supabaseUrl, supabaseKey);
+                                    
+                    
+                    
+                    
+                               const a =     async () => {
+                                        const perfectProbability=100;
+                                        const coins = this.props.over.state.coinM;
+                                        const guess=this.props.over.state.coinC; 
+                                        const probability=perfectProbability-(((coins/9)*100));
+                                        const score =Math.round((9-(coins-guess))*probability);
+                                        
+                                        
+                                      try {
+                                        const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score,guess: coins-guess}]);
+                                        if (error) {
+                                          throw error;
+                                        }
+                                        
+                                      } catch (error) {
+                                        console.error('Error adding item:', error.message);
+                                      }
+                                      swal.close();
+                                    }
+                    
+                                    a();
+                    
+                    
+                    
+                             
+                                 
+                          
+                                  
+                                    this.props.over.setState({ statu: 'start' });
+                                  });
 
 
 

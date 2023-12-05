@@ -6,6 +6,31 @@ button {
     background-color: #7289da;
     color: white;
   }
+
+  #list{
+ width: 400px;
+ background-color: #7289da;
+ border: 2px solid white;
+ min-height:150px;
+ border-radius: 25px;
+ margin-top: 2%;
+  }
+
+#table{
+  color: white;
+  width: 100%;
+  font-size: 14px;
+border-collapse: collapse;
+
+}
+
+th{
+  
+  border-bottom: 1px solid white;
+}
+td{
+  text-align: center;
+}
   
   @media (max-width: 768px) {
     button {

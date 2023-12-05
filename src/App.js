@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './style.css';
 import Piece from './gameComponent/Piece.js';
 import coinSound from './gameComponent/audio/cs.mp3'; // Import bomb sound
@@ -10,14 +10,21 @@ import reset from './gameComponent/images/reset.png';
 import bc from './gameComponent/images/bc.jpg';
 import wood from './gameComponent/images/wood.webp';
 import './button.css';
+import { createClient } from '@supabase/supabase-js';
 
 
 class App extends Component{
 p=[];
+list=[];
+
+
+
+
 
 constructor(props){
 super(props);
 this.state = {
+fetched:false,
 statu: 'Starting',
 music:new Audio(music),
 bombM: 0,
@@ -64,6 +71,11 @@ image:{
 
 }
 
+
+
+
+
+
 gameover=()=>{
  /* alert("ki");
 
@@ -98,6 +110,9 @@ start = ()=>{
   }
 
   this.p=pieces;
+ 
+ 
+
   this.setState({ 
     coinC: coinCount,
     coinM: coinCount,
@@ -136,6 +151,59 @@ restart = ()=>{
 render() {
 if(this.state.statu==="going"){
   
+  const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
+  const supabase = createClient(supabaseUrl, supabaseKey);
+  const l = [];
+fetch = async ()=>{
+ if(this.state.fetched===false){
+    try {
+      const { data: items, error } = await supabase.from('Scores').select('*');
+     
+      if (error) {
+        throw error;
+      }else{
+        items.forEach((item) => {
+          console.log(item.Name);
+          var row = document.createElement("tr");
+          row.innerHTML='';
+
+          var c1 = document.createElement("td");
+          c1.innerHTML=item.Name;
+          var c2 = document.createElement("td");
+          c2.innerHTML=item.coins;
+          var c3 = document.createElement("td");
+          c3.innerHTML=item.guess;
+          var c4 = document.createElement("td");
+          c4.innerHTML=item.score;
+
+          row.appendChild(c1);
+          row.appendChild(c2);
+          row.appendChild(c3);
+          row.appendChild(c4);
+          
+          
+
+
+
+        document.getElementById('tbody').appendChild(row);
+        });
+        this.list=l;
+        
+    
+    
+   
+      }
+   
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+    this.setState({fetched:true});
+  }
+  }
+
+
+ fetch();
   
   
   
@@ -161,14 +229,93 @@ if(this.state.statu==="going"){
     </div>
   );
 }else{
-  return (
- 
+  const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
+  const supabase = createClient(supabaseUrl, supabaseKey);
+  const l = [];
+fetch = async ()=>{
+ if(this.state.fetched===false){
+    try {
+      const { data: items, error } = await supabase.from('Scores').select('*');
+     
+      if (error) {
+        throw error;
+      }else{
+        items.forEach((item) => {
+          console.log(item.Name);
+          var row = document.createElement("tr");
+          row.innerHTML='';
+
+          var c1 = document.createElement("td");
+          c1.innerHTML=item.Name;
+          var c2 = document.createElement("td");
+          c2.innerHTML=item.coins;
+          var c3 = document.createElement("td");
+          c3.innerHTML=item.guess;
+          var c4 = document.createElement("td");
+          c4.innerHTML=item.score;
+
+          row.appendChild(c1);
+          row.appendChild(c2);
+          row.appendChild(c3);
+          row.appendChild(c4);
+          
+          
+
+
+
+        document.getElementById('tbody').appendChild(row);
+        });
+        this.list=l;
+        
+    
+    
    
+      }
+   
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+    this.setState({fetched:true});
+  }
+  }
+
+
+ fetch();
+  
+
+ 
+  return (
+
+
+
+
+
     <div className="App" style={this.state.style}>
     
      <button id="start" onClick={this.start}>START GAME</button>
+      <div id="list">
+   
+        <table id="table">
+          <thead>
+          <tr>
+            <th>NAME</th>
+            <th>COINS</th>
+            <th>GUESSED</th>
+            <th>SCORE</th>
+          </tr>
+          </thead>
+          <tbody id="tbody">
+        
+        
+          </tbody>
+        </table>
+
+
+      </div>
          
       </div>
+  
   );
   
 }
