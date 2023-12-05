@@ -10,7 +10,7 @@ import reset from './gameComponent/images/reset.png';
 import bc from './gameComponent/images/bc.jpg';
 import wood from './gameComponent/images/wood.webp';
 import './button.css';
-import { createClient } from '@supabase/supabase-js';
+//import { createClient } from '@supabase/supabase-js';
 
 
 class App extends Component{
@@ -150,7 +150,7 @@ restart = ()=>{
 
 render() {
 if(this.state.statu==="going"){
-  
+  /*
   const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -205,7 +205,7 @@ fetch = async ()=>{
 
  fetch();
   
-  
+  */
   
  
   return (
@@ -229,6 +229,7 @@ fetch = async ()=>{
     </div>
   );
 }else{
+  /*
   const supabaseUrl = 'https://tcrxownxfmycjqljaptx.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjcnhvd254Zm15Y2pxbGphcHR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTY3OTY0MiwiZXhwIjoyMDE3MjU1NjQyfQ.-qujbqUmsCbNl_HYggtO1bkEADscJZ_zL3vH3Xcgh3o';
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -281,9 +282,9 @@ fetch = async ()=>{
   }
 
 
- fetch();
+ //fetch();
   
-
+*/
  
   return (
 

@@ -118,13 +118,13 @@ handleClick = () => {
            const a =     async () => {
                     const perfectProbability=100;
                     const coins = this.props.over.state.coinM;
-                    const guess=this.props.over.state.coinC; 
+                    let guess=this.props.over.state.coinC; 
                     const probability=perfectProbability-(((coins/9)*100));
                     const score =Math.round((9-(coins-guess))*probability);
                     
-                    
+                    guess = coins-guess;
                   try {
-                    const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score,guess: coins-guess}]);
+                    const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score, guess: guess}]);
                     if (error) {
                       throw error;
                     }
@@ -203,13 +203,13 @@ handleClick = () => {
                                const a =     async () => {
                                         const perfectProbability=100;
                                         const coins = this.props.over.state.coinM;
-                                        const guess=this.props.over.state.coinC; 
+                                        let guess=this.props.over.state.coinC; 
                                         const probability=perfectProbability-(((coins/9)*100));
                                         const score =Math.round((9-(coins-guess))*probability);
-                                        
+                                          guess = coins-guess;
                                         
                                       try {
-                                        const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score,guess: coins-guess}]);
+                                        const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score,guess: guess}]);
                                         if (error) {
                                           throw error;
                                         }
