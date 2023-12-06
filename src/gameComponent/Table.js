@@ -1,7 +1,7 @@
 
 import React, { Component, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
-
+import './button.css';
 
 
 
@@ -10,9 +10,8 @@ class Table extends Component{
  
 
     
-    constructor (props) {
+  constructor(props) {
       super(props);
-
     };
 
 

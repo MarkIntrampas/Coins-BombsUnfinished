@@ -1,4 +1,3 @@
-
 button {
     height: 100px;
     width: 400px;
@@ -12,32 +11,23 @@ button {
  width: 400px;
  background-color: #7289da;
  border: 2px solid white;
- max-height:250px;
- min-height: 100px;
+ min-height: 150px;
  border-radius: 25px;
  margin-top: 2%;
  overflow: auto;
   }
 
-#table{
+#tbody{
+  min-height: 50px;
   color: white;
-  width: 100%;
-  font-size: 14px;
-border-collapse: collapse;
+   overflow: scroll;
 
 }
 
-thead{
-  position: sticky;
-  top:0;
-  background-color: #7289da;
- 
+th{
+  
+  border-bottom: 1px solid white;
 }
-
-#headt{
-  border:none;
-}
-
 td{
   text-align: center;
 }
@@ -53,6 +43,6 @@ td{
     #list{
       margin-top: 5%;
       width: 90%;
-      max-height:250px;
+    
        }
   }
