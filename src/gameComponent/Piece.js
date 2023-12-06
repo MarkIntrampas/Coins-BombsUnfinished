@@ -102,7 +102,7 @@ const a =     async () => {
       const coins = this.props.over.state.coinM;
       let guess=this.props.over.state.coinC; 
       const probability=perfectProbability-(((coins/9)*100));
-      const score =Math.round((9-(coins-guess))*probability);
+      const score =(Math.round((9-(coins-guess)))+guess*probability);
       
       guess = coins-guess;
     try {
