@@ -68,6 +68,9 @@ f = () => {
   
 
 swal({
+  backdrop:true,
+  allowOutsideClick: false,
+  closeOnClickOutside: false,
   text: 'Please Enter your Name',
   content: {
     element: 'input',
@@ -81,9 +84,7 @@ swal({
     text: "SUBMIT",
     closeModal: false,
   },
-     backdrop:true,
-    allowOutsideClick: false,
-
+   
 })
 .then(name => {
   
