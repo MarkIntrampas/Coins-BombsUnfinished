@@ -290,6 +290,10 @@ fetch = async ()=>{
  //fetch();
   
 */
+if(this.state.reload===false){
+  this.setState({reload:true});
+  window.location.reload();
+}
  
   return (
 
