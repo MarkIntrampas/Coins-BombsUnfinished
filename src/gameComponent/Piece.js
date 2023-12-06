@@ -125,8 +125,9 @@ const a =     async () => {
 
 
 
-  this.props.over.setState({ statu: 'start' });
+  this.props.over.setState({ statu: 'start', reload:false });
   swal.close();
+  
 
 }else{
   swal.close();

@@ -11,9 +11,10 @@ button {
  width: 400px;
  background-color: #7289da;
  border: 2px solid white;
- min-height: 250px;
+ min-height: 150px;
  border-radius: 25px;
  margin-top: 2%;
+ overflow: auto;
   }
 
 #table{

@@ -11,7 +11,8 @@ import bc from './gameComponent/images/bc.jpg';
 import wood from './gameComponent/images/wood.webp';
 import './button.css';
 //import { createClient } from '@supabase/supabase-js';
-
+import table from  './gameComponent/Table.js';
+import Table from './gameComponent/Table.js';
 
 class App extends Component{
 p=[];
@@ -25,6 +26,7 @@ constructor(props){
 super(props);
 this.state = {
 fetched:false,
+reload:true,
 statu: 'Starting',
 music:new Audio(music),
 bombM: 0,
@@ -206,11 +208,14 @@ fetch = async ()=>{
  fetch();
   
   */
-  
+ if(this.state.reload===false){
+  this.setState({reload:true});
+  window.location.reload();
+}
+ 
  
   return (
  
-   
     <div className="App" style={this.state.style}>
      <div id="bar">   
       <h1 class="label"><img src={c} alt="Icon" style={this.state.image} /> {this.state.coinC}/{this.state.coinM}</h1>
@@ -306,10 +311,7 @@ fetch = async ()=>{
             <th>SCORE</th>
           </tr>
           </thead>
-          <tbody id="tbody">
-        
-        
-          </tbody>
+         <Table />
         </table>
 
 
