@@ -81,6 +81,8 @@ swal({
     text: "SUBMIT",
     closeModal: false,
   },
+     backdrop:true,
+    allowOutsideClick: false,
 
 })
 .then(name => {
