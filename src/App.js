@@ -308,7 +308,7 @@ if(this.state.reload===false){
    
         <table id="table">
           <thead>
-          <tr>
+          <tr id="headt">
             <th>NAME</th>
             <th>COINS</th>
             <th>GUESSED</th>

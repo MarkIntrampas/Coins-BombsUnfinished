@@ -102,9 +102,10 @@ const a =     async () => {
       const coins = this.props.over.state.coinM;
       let guess=this.props.over.state.coinC; 
       const probability=perfectProbability-(((coins/9)*100));
-      let score =(Math.round((9-(coins-guess)))*(guess/coins)*probability);
+      guess = coins-guess;;
+      let score =(Math.round((9-guess))*(guess/coins)*probability);
       score = Math.round(score);
-      guess = coins-guess;
+      
     try {
       const { error } = await supabase.from('Scores').insert([{ Name: name,coins: coins,score: score, guess: guess}]);
       if (error) {
