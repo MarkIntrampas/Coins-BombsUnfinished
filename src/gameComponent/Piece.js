@@ -180,6 +180,7 @@ handleClick = () => {
                })
             .then((value) => {
            
+  this.props.over.setState({ statu: 'start', reload:false });
                swal.close();
              
           
