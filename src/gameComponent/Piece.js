@@ -183,7 +183,7 @@ handleClick = () => {
                swal.close();
              
           
-         this.f();
+         
           
      
 
